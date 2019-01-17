@@ -1,0 +1,2 @@
+/* parcel has an issue importing css with postcss, might need to switch to webpack or something other than postcss */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);

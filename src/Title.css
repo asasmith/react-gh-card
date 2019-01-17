@@ -1,0 +1,26 @@
+.title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-height: 30vh;
+}
+
+.social {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 75%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+p {
+  margin: auto;
+  max-width: 75%;
+}

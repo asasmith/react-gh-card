@@ -1,0 +1,66 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+:root {
+  --mainFont: 'Montserrat'
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#app {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.gh-card {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 50%;
+}
+
+.gh-card__img {
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  width: 25%;
+}
+
+.gh-card__title {
+  font-family: var(--mainFont);
+  text-align: center;
+}.title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-height: 30vh;
+}
+
+.social {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 75%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+p {
+  margin: auto;
+  max-width: 75%;
+}
