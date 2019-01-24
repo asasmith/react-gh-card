@@ -1,0 +1,16 @@
+#search {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 8rem;
+  width: 100%;
+}
+
+input {
+  border: none;
+  box-shadow: var(--boxShadow);
+  font-family: inherit;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}

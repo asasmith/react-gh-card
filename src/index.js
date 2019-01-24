@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import HelloWorld from './HelloWorld'
-import GithubCard from './GithubCard'
+import App from './App'
 
 const app = document.getElementById('app')
 
-ReactDOM.render(<GithubCard />, app)
+ReactDOM.render(<App />, app)
