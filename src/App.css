@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 :root {
-  --mainFont: 'Montserrat'
+  --mainFont: 'Montserrat';
+  --boxShadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 body {
@@ -18,7 +19,7 @@ body {
 }
 
 .gh-card {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: var(--boxShadow);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -27,7 +28,7 @@ body {
 
 .gh-card__img {
   border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: var(--boxShadow);
   position: absolute;
   top: 0;
   transform: translateX(-50%) translateY(-50%);

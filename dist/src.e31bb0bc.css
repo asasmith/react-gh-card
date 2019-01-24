@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 :root {
-  --mainFont: 'Montserrat'
+  --mainFont: 'Montserrat';
+  --boxShadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 body {
@@ -18,7 +19,7 @@ body {
 }
 
 .gh-card {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: var(--boxShadow);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -27,7 +28,7 @@ body {
 
 .gh-card__img {
   border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: var(--boxShadow);
   position: absolute;
   top: 0;
   -webkit-transform: translateX(-50%) translateY(-50%);
@@ -38,16 +39,35 @@ body {
 .gh-card__title {
   font-family: var(--mainFont);
   text-align: center;
-}.title {
+}#search {
+  align-items: center;
   display: flex;
   flex-direction: column;
+  min-height: 8rem;
+  width: 100%;
+}
+
+input {
+  border: none;
+  box-shadow: var(--boxShadow);
+  font-family: inherit;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}.title {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
   text-align: center;
   min-height: 30vh;
 }
 
 .social {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
   margin: auto;
   width: 75%;
 }

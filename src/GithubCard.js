@@ -1,54 +1,85 @@
 import React from 'react'
 import './App.css'
 import Title from './Title'
+import SearchInput from './SearchInput'
 import './Title.css'
+import { timingSafeEqual } from 'crypto';
 
 class GithubCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       user: {
-        login: "asasmith",
-        id: 11489171,
-        node_id: "MDQ6VXNlcjExNDg5MTcx",
-        avatar_url: "https://avatars2.githubusercontent.com/u/11489171?v=4",
-        gravatar_id: "",
-        url: "https://api.github.com/users/asasmith",
-        html_url: "https://github.com/asasmith",
-        followers_url: "https://api.github.com/users/asasmith/followers",
-        following_url: "https://api.github.com/users/asasmith/following{/other_user}",
-        gists_url: "https://api.github.com/users/asasmith/gists{/gist_id}",
-        starred_url: "https://api.github.com/users/asasmith/starred{/owner}{/repo}",
-        subscriptions_url: "https://api.github.com/users/asasmith/subscriptions",
-        organizations_url: "https://api.github.com/users/asasmith/orgs",
-        repos_url: "https://api.github.com/users/asasmith/repos",
-        events_url: "https://api.github.com/users/asasmith/events{/privacy}",
-        received_events_url: "https://api.github.com/users/asasmith/received_events",
-        type: "User",
-        site_admin: false,
-        name: "Asa Smith",
-        company: null,
-        blog: "asasmith.com",
-        location: "Baltimore MD",
-        email: null,
-        hireable: true,
-        bio: "Front End Dev. Father. Coffee Lover. I used to build houses. Now I build websites. 🚀 ",
-        public_repos: 57,
-        public_gists: 1,
-        followers: 10,
-        following: 9,
-        created_at: "2015-03-15T15:54:03Z",
-        updated_at: "2018-12-30T18:27:29Z"
-      }
+      },
+    }
+
+    this.search = this.search.bind(this)
+    // this.dataHandler = this.dataHandler.bind(this)
+  }
+
+  componentDidMount(){
+    console.log('the github card componentDidMount')
+  }
+
+  search(e) {
+    if(e.keyCode === 13) {
+      const inputVal = document.querySelector('#search input').value //todo: move this to state
+      const url = `https://api.github.com/users/${inputVal}`
+
+      // this.getData('GET', url, this.dataHandler)
+
+      fetch(url)
+        .then((response) => {
+          const res = response.json()
+          return res
+        })
+        .then(function(response) {
+          const user = response
+          console.log(`this in the fetch part`)
+          console.log(this)
+          this.setState({
+            user,
+          })
+        }.bind(this));
     }
   }
+
+  /* 
+    * ajax example *
+    getData(method, url, cb) {
+      const req = new XMLHttpRequest();
+
+      req.open(method, url, true)
+      req.onload = () => {
+        if(req.status >= 200 && req.status < 400) {
+          cb(req.response)
+        } else {
+          console.log('error')
+        }
+      }
+
+      req.send()
+    }
+
+    dataHandler(data) {
+      const user = JSON.parse(data)
+      console.log(user)
+      this.setState({
+        user,
+      })
+    }
+  */
+
   render() {
     const { user } = this.state
     return (
-      <div className='gh-card'> 
-        <Title title={user.name} location={user.location} bio={user.bio} url={user.html_url} repos={user.public_repos} followers={user.followers} following={user.following}/>
-        {/* <h1 className='gh-card__title'>{user.name}</h1> */}
-        <img className='gh-card__img' src={user.avatar_url}></img>
+      <div>
+        <SearchInput eventHandler={this.search}/>
+        <div className='gh-card'> 
+          <Title title={user.name} location={user.location} bio={user.bio} url={user.html_url} repos={user.public_repos} followers={user.followers} following={user.following}/>
+          {/* <h1 className='gh-card__title'>{user.name}</h1> */}
+          <img className='gh-card__img' src={user.avatar_url}></img>
+        </div>
       </div>
     )
   }
