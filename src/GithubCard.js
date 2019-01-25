@@ -43,9 +43,8 @@ export default class GithubCard extends React.Component {
         })
         .then(function(response) {
           const user = response
-          console.log(`this in the fetch part`)
-          console.log(this)
           this.setState({
+            inputVal: '',
             user,
             userLoaded: true,
           })
@@ -86,7 +85,7 @@ export default class GithubCard extends React.Component {
         <SearchInput 
           eventHandler={this.search}
           inputChange={this.inputChange}
-          inputVal={this.inputVal}  
+          inputVal={this.state.inputVal}  
         />
         {this.state.userLoaded && 
           <div className='gh-card'> 
