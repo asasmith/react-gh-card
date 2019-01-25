@@ -3,17 +3,18 @@ import './App.css'
 import Title from './Title'
 import SearchInput from './SearchInput'
 import './Title.css'
-import { timingSafeEqual } from 'crypto';
 
-class GithubCard extends React.Component {
+export default class GithubCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {
-      },
+      inputVal: '',
+      user: {},
+      userLoaded: false,
     }
 
     this.search = this.search.bind(this)
+    this.inputChange = this.inputChange.bind(this)
     // this.dataHandler = this.dataHandler.bind(this)
   }
 
@@ -21,12 +22,19 @@ class GithubCard extends React.Component {
     console.log('the github card componentDidMount')
   }
 
+  inputChange() {
+    this.setState({
+      inputVal: event.target.value,
+    })
+  }
+
   search(e) {
     if(e.keyCode === 13) {
-      const inputVal = document.querySelector('#search input').value //todo: move this to state
+      e.preventDefault()
+      const inputVal = this.state.inputVal
       const url = `https://api.github.com/users/${inputVal}`
 
-      // this.getData('GET', url, this.dataHandler)
+      // this.getData('GET', url, this.dataHandler) for AJAX example
 
       fetch(url)
         .then((response) => {
@@ -39,6 +47,7 @@ class GithubCard extends React.Component {
           console.log(this)
           this.setState({
             user,
+            userLoaded: true,
           })
         }.bind(this));
     }
@@ -74,15 +83,26 @@ class GithubCard extends React.Component {
     const { user } = this.state
     return (
       <div>
-        <SearchInput eventHandler={this.search}/>
-        <div className='gh-card'> 
-          <Title title={user.name} location={user.location} bio={user.bio} url={user.html_url} repos={user.public_repos} followers={user.followers} following={user.following}/>
-          {/* <h1 className='gh-card__title'>{user.name}</h1> */}
-          <img className='gh-card__img' src={user.avatar_url}></img>
-        </div>
+        <SearchInput 
+          eventHandler={this.search}
+          inputChange={this.inputChange}
+          inputVal={this.inputVal}  
+        />
+        {this.state.userLoaded && 
+          <div className='gh-card'> 
+            <Title 
+              title={user.name} 
+              location={user.location} 
+              bio={user.bio} 
+              url={user.html_url} 
+              repos={user.public_repos} 
+              followers={user.followers} 
+              following={user.following}
+            />
+            <img className='gh-card__img' src={user.avatar_url}></img>
+          </div>
+        }
       </div>
     )
   }
 }
-
-export default GithubCard
