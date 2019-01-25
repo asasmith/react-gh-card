@@ -23,7 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  min-width: 50%;
+  min-width: 55vw;
 }
 
 .gh-card__img {
