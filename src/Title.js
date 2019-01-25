@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Title = (props) => {
+export default function Title(props) {
   return (
     <div className='title'>
       <a href={props.url} target='_blank'> 
@@ -16,5 +16,3 @@ const Title = (props) => {
     </div>
   )
 }
-
-export default Title
