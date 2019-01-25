@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 import './SearchInput.css'
 
-// class SearchInput extends Component {
-//   constructor(props) {
-//     super(props)
-//   }
-
-const SearchInput = (props) => {
+export default function SearchInput (props) {
   return (
     <div id='search'>
-      <input onKeyUp={props.eventHandler}  type="text" placeholder='Search GH User'></input> 
+      <input onKeyUp={props.eventHandler} onChange={props.inputChange} type="text" placeholder='Search GH User' value={props.inputVal}></input> 
       <p>press enter</p>
     </div>
   )
 }
-export default SearchInput
