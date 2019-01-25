@@ -6,6 +6,6 @@ Using this app to teach myself basic [React](https://reactjs.org) concepts like 
 
 ### Next steps
 
-- [] add testing
-- [] add eslint/prettier
-- [] change module bundler to webpack
+- [ ] add testing
+- [ ] add eslint/prettier
+- [ ] change module bundler to webpack
