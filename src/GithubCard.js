@@ -22,7 +22,7 @@ export default class GithubCard extends React.Component {
     console.log('the github card componentDidMount')
   }
 
-  inputChange() {
+  inputChange(event) {
     this.setState({
       inputVal: event.target.value,
     })
