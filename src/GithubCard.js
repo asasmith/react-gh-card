@@ -89,14 +89,14 @@ export default class GithubCard extends React.Component {
         />
         {this.state.userLoaded && 
           <div className='gh-card'> 
-            <Title 
-              title={user.name} 
-              location={user.location} 
-              bio={user.bio} 
-              url={user.html_url} 
-              repos={user.public_repos} 
-              followers={user.followers} 
-              following={user.following}
+            <Title {...user}
+              // title={user.name} 
+              // location={user.location} 
+              // bio={user.bio} 
+              // url={user.html_url} 
+              // repos={user.public_repos} 
+              // followers={user.followers} 
+              // following={user.following}
             />
             <img className='gh-card__img' src={user.avatar_url}></img>
           </div>
