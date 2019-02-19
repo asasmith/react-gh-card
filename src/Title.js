@@ -9,7 +9,7 @@ export default function Title(props) {
       <p data-testid='bio'>{props.bio}</p>
       <p>{props.location}</p>
       <div className='social'>
-        <p data-testid='repos'>Repos: {props.repos}</p> 
+        <p data-testid='repos'>Repos: {props.public_repos}</p> 
         <p data-testid='followers'>Followers: {props.followers}</p> 
         <p data-testid='following'>Following: {props.following}</p> 
       </div>
